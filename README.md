@@ -64,6 +64,67 @@ See [POSTMAN.md](C:\Users\ogunw\OneDrive\Documents\JOBPROJ\POSTMAN.md) for the r
 
 See [DEPLOYMENT.md](C:\Users\ogunw\OneDrive\Documents\JOBPROJ\DEPLOYMENT.md) for environment variables and deployment notes.
 
+Current Railway deployment:
+
+```text
+https://job-application-portal-production.up.railway.app
+```
+
+## Frontend Handoff
+
+Base URL:
+
+```text
+https://job-application-portal-production.up.railway.app
+```
+
+Use Bearer auth for protected routes:
+
+```text
+Authorization: Bearer <token>
+```
+
+Role flows:
+
+- `APPLICANT`: register/login, browse jobs, apply to jobs, track application status
+- `EMPLOYER`: register/login, create jobs, view company applications, update application status
+- `ADMIN`: login, review and manage applications platform-wide
+
+Useful endpoints:
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/jobs`
+- `GET /api/jobs/search?value=...`
+- `POST /api/jobs`
+- `GET /api/jobs/company/me`
+- `POST /api/applications`
+- `GET /api/applications/applicant/me`
+- `GET /api/applications/company/me`
+- `PATCH /api/applications/company/me/{applicationId}/status`
+- `GET /api/applications`
+- `PATCH /api/applications/{applicationId}/status`
+
+## Suggested Frontend Pages
+
+- Landing page
+- Jobs listing page
+- Job details page
+- Login page
+- Register page
+- Applicant dashboard
+- Employer dashboard
+- Admin dashboard
+
+## Suggested Design Direction
+
+- Use a clean recruiting-platform layout with a light background and one strong accent color
+- Keep public pages simple: hero section, job search, job cards, clear auth calls to action
+- Use dashboard sidebars for authenticated roles
+- Show job and application data with cards or clean tables
+- Use status badges for `PENDING`, `REVIEWED`, `ACCEPTED`, and `REJECTED`
+- Make the experience responsive from the start for mobile and desktop
+
 ## Testing
 
 Integration tests live under:
