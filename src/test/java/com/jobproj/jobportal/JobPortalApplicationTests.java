@@ -96,19 +96,20 @@ class JobPortalApplicationTests {
 
         String employerToken = loginAndGetToken(employerEmail);
 
-        ResponseEntity<String> createJobResponse = postAuthorized("/api/jobs", Map.of(
-                "jobTitle", "Backend Engineer",
-                "description", "Build APIs",
-                "location", "Lagos",
-                "jobType", "Remote",
-                "requiredSkills", "Java,Spring Boot",
-                "experienceLevel", "Mid Level",
-                "salary", 450000,
-                "requiresInternet", true,
-                "workHours", "9am-5pm",
-                "officeAddress", "12 Marina Road",
-                "providesHousing", false
-        ), employerToken);
+        Map<String, Object> createJobPayload = new LinkedHashMap<>();
+        createJobPayload.put("jobTitle", "Backend Engineer");
+        createJobPayload.put("description", "Build APIs");
+        createJobPayload.put("location", "Lagos");
+        createJobPayload.put("jobType", "Remote");
+        createJobPayload.put("requiredSkills", "Java,Spring Boot");
+        createJobPayload.put("experienceLevel", "Mid Level");
+        createJobPayload.put("salary", 450000);
+        createJobPayload.put("requiresInternet", true);
+        createJobPayload.put("workHours", "9am-5pm");
+        createJobPayload.put("officeAddress", "12 Marina Road");
+        createJobPayload.put("providesHousing", false);
+
+        ResponseEntity<String> createJobResponse = postAuthorized("/api/jobs", createJobPayload, employerToken);
 
         assertEquals(HttpStatus.CREATED, createJobResponse.getStatusCode());
         String jobId = objectMapper.readTree(createJobResponse.getBody()).get("jobId").asText();
