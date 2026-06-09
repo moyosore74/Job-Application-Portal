@@ -58,11 +58,11 @@ Import:
 - `postman/JobPortal.postman_collection.json`
 - `postman/JobPortal.local.postman_environment.json`
 
-See [POSTMAN.md](C:\Users\ogunw\OneDrive\Documents\JOBPROJ\POSTMAN.md) for the request flow.
+See [POSTMAN.md](POSTMAN.md) for the request flow.
 
 ## Deployment
 
-See [DEPLOYMENT.md](C:\Users\ogunw\OneDrive\Documents\JOBPROJ\DEPLOYMENT.md) for environment variables and deployment notes.
+See [DEPLOYMENT.md](DEPLOYMENT.md) for environment variables and deployment notes.
 
 Current Railway deployment:
 
@@ -104,6 +104,36 @@ Useful endpoints:
 - `PATCH /api/applications/company/me/{applicationId}/status`
 - `GET /api/applications`
 - `PATCH /api/applications/{applicationId}/status`
+
+### Local Demo Jobs
+
+Demo jobs are available only when the backend runs with the `local` Spring profile. They are intended for frontend development and API connection testing, not production deployment.
+
+Enable them locally:
+
+```text
+SPRING_PROFILES_ACTIVE=local
+```
+
+Then start the backend and call:
+
+```text
+GET http://localhost:8080/api/jobs
+```
+
+Known demo records for frontend testing:
+
+- `JOB-DEMO-001` - Frontend Developer at BrightPath Technologies
+- `JOB-DEMO-002` - Backend Engineer at BrightPath Technologies
+- `JOB-DEMO-003` - Data Analyst at Lagoon Health Systems
+- `JOB-DEMO-004` - Product Manager at CivicPay Africa
+- `JOB-DEMO-005` - Customer Support Specialist at CivicPay Africa
+
+Search/detail example:
+
+```text
+GET http://localhost:8080/api/jobs/search?value=JOB-DEMO-001
+```
 
 ## Suggested Frontend Pages
 
