@@ -47,7 +47,8 @@ Suggested test flow:
 
 Notes:
 
-- Public endpoints are `GET /api/jobs` and `GET /api/jobs/search`.
+- Public endpoints are `GET /api/jobs`, `GET /api/jobs/{jobId}`, and `GET /api/jobs/search`.
+- Authenticated users can call `GET /api/auth/me` after login.
 - Protected endpoints use Bearer auth with `{{currentToken}}`.
 - You usually do not have to switch tokens manually after login because the `Applicant`, `Employer`, and `Admin` folders set the correct token automatically.
 - After deployment, the main thing you normally change is `baseUrl`.

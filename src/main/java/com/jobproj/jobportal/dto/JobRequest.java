@@ -36,6 +36,9 @@ public class JobRequest {
     @Positive
     private double salary;
 
+    @Size(max = 10)
+    private String currency;
+
     private Boolean requiresInternet;
 
     @Size(max = 100)
@@ -108,6 +111,14 @@ public class JobRequest {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Boolean getRequiresInternet() {

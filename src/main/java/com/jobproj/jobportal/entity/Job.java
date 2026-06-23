@@ -43,6 +43,9 @@ public class Job {
     @Column(name = "salary", nullable = false)
     private double salary;
 
+    @Column(name = "currency", length = 10)
+    private String currency = "NGN";
+
     @Column(name = "requires_internet")
     private Boolean requiresInternet;
 
@@ -131,6 +134,14 @@ public class Job {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Boolean getRequiresInternet() {

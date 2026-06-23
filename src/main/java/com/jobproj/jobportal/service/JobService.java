@@ -20,6 +20,8 @@ import java.util.List;
 @Service
 public class JobService {
 
+    private static final String DEFAULT_CURRENCY = "NGN";
+
     private final JobRepository jobRepository;
     private final CompanyRepository companyRepository;
 
@@ -45,6 +47,7 @@ public class JobService {
         job.setRequiredSkills(request.getRequiredSkills());
         job.setExperienceLevel(request.getExperienceLevel());
         job.setSalary(request.getSalary());
+        job.setCurrency(resolveCurrency(request.getCurrency()));
         job.setRequiresInternet(request.getRequiresInternet());
         job.setWorkHours(request.getWorkHours());
         job.setOfficeAddress(request.getOfficeAddress());
@@ -66,6 +69,11 @@ public class JobService {
         return jobRepository.findByCompanyCompanyIdOrderByUploadedDateDesc(companyId).stream()
                 .map(this::toResponse)
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public JobResponse getJobById(String jobId) {
+        return toResponse(getJobEntity(jobId));
     }
 
     @Transactional(readOnly = true)
@@ -153,11 +161,19 @@ public class JobService {
         response.setRequiredSkills(job.getRequiredSkills());
         response.setExperienceLevel(job.getExperienceLevel());
         response.setSalary(job.getSalary());
+        response.setCurrency(resolveCurrency(job.getCurrency()));
         response.setRequiresInternet(job.getRequiresInternet());
         response.setWorkHours(job.getWorkHours());
         response.setOfficeAddress(job.getOfficeAddress());
         response.setProvidesHousing(job.getProvidesHousing());
         response.setUploadedDate(job.getUploadedDate());
         return response;
+    }
+
+    private String resolveCurrency(String currency) {
+        if (currency == null || currency.isBlank()) {
+            return DEFAULT_CURRENCY;
+        }
+        return currency.trim().toUpperCase();
     }
 }

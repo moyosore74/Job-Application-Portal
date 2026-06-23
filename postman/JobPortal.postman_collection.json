@@ -365,6 +365,23 @@
               ]
             }
           }
+        },
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          }
         }
       ]
     },
@@ -432,6 +449,23 @@
                   "key": "value",
                   "value": "{{jobSearchValue}}"
                 }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Job By Id",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/jobs/{{jobId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "jobs",
+                "{{jobId}}"
               ]
             }
           }
@@ -587,7 +621,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"companyId\": \"{{companyId}}\",\n  \"jobTitle\": \"Backend Java Engineer\",\n  \"description\": \"Build and maintain APIs for the job portal.\",\n  \"location\": \"Lagos\",\n  \"jobType\": \"Remote\",\n  \"requiredSkills\": \"Java, Spring Boot, MySQL\",\n  \"experienceLevel\": \"Mid Level\",\n  \"salary\": 450000,\n  \"requiresInternet\": true,\n  \"workHours\": \"9am-5pm\",\n  \"officeAddress\": \"12 Marina Road\",\n  \"providesHousing\": false\n}"
+              "raw": "{\n  \"companyId\": \"{{companyId}}\",\n  \"jobTitle\": \"Backend Java Engineer\",\n  \"description\": \"Build and maintain APIs for the job portal.\",\n  \"location\": \"Lagos\",\n  \"jobType\": \"Remote\",\n  \"requiredSkills\": \"Java, Spring Boot, MySQL\",\n  \"experienceLevel\": \"Mid Level\",\n  \"salary\": 450000,\n  \"currency\": \"NGN\",\n  \"requiresInternet\": true,\n  \"workHours\": \"9am-5pm\",\n  \"officeAddress\": \"12 Marina Road\",\n  \"providesHousing\": false\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/jobs",
@@ -746,7 +780,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"companyId\": \"{{companyId}}\",\n  \"jobTitle\": \"Backend Java Engineer\",\n  \"description\": \"Build and maintain APIs for the job portal.\",\n  \"location\": \"Lagos\",\n  \"jobType\": \"Remote\",\n  \"requiredSkills\": \"Java, Spring Boot, MySQL\",\n  \"experienceLevel\": \"Mid Level\",\n  \"salary\": 450000,\n  \"requiresInternet\": true,\n  \"workHours\": \"9am-5pm\",\n  \"officeAddress\": \"12 Marina Road\",\n  \"providesHousing\": false\n}"
+              "raw": "{\n  \"companyId\": \"{{companyId}}\",\n  \"jobTitle\": \"Backend Java Engineer\",\n  \"description\": \"Build and maintain APIs for the job portal.\",\n  \"location\": \"Lagos\",\n  \"jobType\": \"Remote\",\n  \"requiredSkills\": \"Java, Spring Boot, MySQL\",\n  \"experienceLevel\": \"Mid Level\",\n  \"salary\": 450000,\n  \"currency\": \"NGN\",\n  \"requiresInternet\": true,\n  \"workHours\": \"9am-5pm\",\n  \"officeAddress\": \"12 Marina Road\",\n  \"providesHousing\": false\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/jobs",

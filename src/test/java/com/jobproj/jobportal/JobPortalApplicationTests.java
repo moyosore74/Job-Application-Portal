@@ -57,6 +57,19 @@ class JobPortalApplicationTests {
         JsonNode authResponse = objectMapper.readTree(loginResponse.getBody());
         assertTrue(authResponse.get("token").asText().startsWith("eyJ"));
         assertEquals(email, authResponse.get("user").get("email").asText());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(authResponse.get("token").asText());
+        ResponseEntity<String> meResponse = restTemplate.exchange(
+                url("/api/auth/me"),
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                String.class
+        );
+
+        assertEquals(HttpStatus.OK, meResponse.getStatusCode());
+        JsonNode currentUser = objectMapper.readTree(meResponse.getBody());
+        assertEquals(email, currentUser.get("email").asText());
     }
 
     @Test
@@ -104,6 +117,7 @@ class JobPortalApplicationTests {
         createJobPayload.put("requiredSkills", "Java,Spring Boot");
         createJobPayload.put("experienceLevel", "Mid Level");
         createJobPayload.put("salary", 450000);
+        createJobPayload.put("currency", "usd");
         createJobPayload.put("requiresInternet", true);
         createJobPayload.put("workHours", "9am-5pm");
         createJobPayload.put("officeAddress", "12 Marina Road");
@@ -112,8 +126,16 @@ class JobPortalApplicationTests {
         ResponseEntity<String> createJobResponse = postAuthorized("/api/jobs", createJobPayload, employerToken);
 
         assertEquals(HttpStatus.CREATED, createJobResponse.getStatusCode());
-        String jobId = objectMapper.readTree(createJobResponse.getBody()).get("jobId").asText();
+        JsonNode createdJob = objectMapper.readTree(createJobResponse.getBody());
+        String jobId = createdJob.get("jobId").asText();
         assertTrue(jobId.startsWith("JOB"));
+        assertEquals("USD", createdJob.get("currency").asText());
+
+        ResponseEntity<String> getJobResponse = restTemplate.getForEntity(url("/api/jobs/" + jobId), String.class);
+        assertEquals(HttpStatus.OK, getJobResponse.getStatusCode());
+        JsonNode foundJob = objectMapper.readTree(getJobResponse.getBody());
+        assertEquals(jobId, foundJob.get("jobId").asText());
+        assertEquals("USD", foundJob.get("currency").asText());
 
         String applicantEmail = uniqueEmail("applicant-flow");
         assertEquals(HttpStatus.CREATED, post("/api/auth/register", Map.of(

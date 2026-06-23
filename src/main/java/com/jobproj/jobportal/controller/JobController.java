@@ -50,6 +50,11 @@ public class JobController {
         return jobService.searchJob(value);
     }
 
+    @GetMapping("/{jobId}")
+    public JobResponse getJob(@PathVariable String jobId) {
+        return jobService.getJobById(jobId);
+    }
+
     @GetMapping("/company/{companyId}")
     @PreAuthorize("hasRole('ADMIN')")
     public List<JobResponse> getCompanyJobs(@PathVariable String companyId) {
@@ -77,11 +82,11 @@ public class JobController {
         return jobService.searchCompanyJob(principal.getCompanyId(), value);
     }
 
-    @DeleteMapping("/{value}")
+    @DeleteMapping("/{jobId}")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteJob(@PathVariable String value) {
-        jobService.deleteJob(value);
+    public void deleteJob(@PathVariable String jobId) {
+        jobService.deleteJob(jobId);
     }
 
     @DeleteMapping("/company/{companyId}/{value}")

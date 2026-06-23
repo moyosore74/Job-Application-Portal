@@ -45,9 +45,12 @@ http://localhost:8080
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
+- `GET /api/auth/me`
 - `GET /api/jobs`
+- `GET /api/jobs/{jobId}`
 - `GET /api/jobs/search`
 - `POST /api/jobs`
+- `DELETE /api/jobs/{jobId}`
 - `POST /api/applications`
 - `PATCH /api/applications/{applicationId}/status`
 
@@ -94,9 +97,12 @@ Useful endpoints:
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
+- `GET /api/auth/me`
 - `GET /api/jobs`
+- `GET /api/jobs/{jobId}`
 - `GET /api/jobs/search?value=...`
 - `POST /api/jobs`
+- `DELETE /api/jobs/{jobId}`
 - `GET /api/jobs/company/me`
 - `POST /api/applications`
 - `GET /api/applications/applicant/me`
@@ -170,5 +176,6 @@ mvn test
 ## Notes
 
 - IDs are generated as random prefixed values like `USER...`, `JOB...`, and `APP...`.
+- Job payloads support `currency` alongside `salary`; if omitted, the API defaults to `NGN`.
 - Duplicate applications are blocked at both the service and database-constraint level.
 - CORS origins are configurable through environment variables.

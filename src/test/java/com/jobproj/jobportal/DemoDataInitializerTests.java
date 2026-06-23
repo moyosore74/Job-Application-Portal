@@ -35,6 +35,10 @@ class DemoDataInitializerTests {
         assertEquals("Frontend Developer", frontendJob.getJobTitle());
         assertEquals("COMP-DEMO-001", frontendJob.getCompany().getCompanyId());
         assertEquals("Remote", frontendJob.getLocation());
+<<<<<<< HEAD
+=======
+        assertEquals("NGN", frontendJob.getCurrency());
+>>>>>>> a270d61 (Update API and documentation)
     }
 
     @Test

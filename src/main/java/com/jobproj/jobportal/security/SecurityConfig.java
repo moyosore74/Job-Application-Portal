@@ -61,8 +61,8 @@ public class SecurityConfig {
                                 writeErrorResponse(response, HttpStatus.FORBIDDEN, "Access denied", request.getRequestURI()))
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/jobs", "/api/jobs/search").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/jobs", "/api/jobs/search", "/api/jobs/*").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())

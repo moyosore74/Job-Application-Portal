@@ -101,6 +101,11 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
+    @Transactional(readOnly = true)
+    public UserResponse getCurrentUser(UserPrincipal principal) {
+        return toResponse(getUserById(principal.getUserId()));
+    }
+
     private UserResponse toResponse(User user) {
         UserResponse response = new UserResponse();
         response.setUserId(user.getUserId());

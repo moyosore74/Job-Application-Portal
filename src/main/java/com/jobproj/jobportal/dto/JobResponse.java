@@ -13,6 +13,7 @@ public class JobResponse {
     private String requiredSkills;
     private String experienceLevel;
     private double salary;
+    private String currency;
     private Boolean requiresInternet;
     private String workHours;
     private String officeAddress;
@@ -97,6 +98,14 @@ public class JobResponse {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Boolean getRequiresInternet() {
