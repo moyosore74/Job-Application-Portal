@@ -69,10 +69,7 @@ public class DemoDataInitializer implements ApplicationRunner {
                         "Java, Spring Boot, MySQL, JWT",
                         "Mid Level",
                         650000,
-<<<<<<< HEAD
-=======
                         "NGN",
->>>>>>> a270d61 (Update API and documentation)
                         true,
                         "9am-5pm",
                         "24 Admiralty Way, Lekki Phase 1",
@@ -88,10 +85,7 @@ public class DemoDataInitializer implements ApplicationRunner {
                         "SQL, Excel, Power BI, Data Cleaning",
                         "Entry Level",
                         350000,
-<<<<<<< HEAD
-=======
                         "NGN",
->>>>>>> a270d61 (Update API and documentation)
                         false,
                         "8am-4pm",
                         "12 Hospital Road, Garki",
@@ -107,10 +101,7 @@ public class DemoDataInitializer implements ApplicationRunner {
                         "Product Strategy, Agile, User Research, Analytics",
                         "Senior Level",
                         900000,
-<<<<<<< HEAD
-=======
                         "NGN",
->>>>>>> a270d61 (Update API and documentation)
                         true,
                         "Flexible core hours",
                         null,
@@ -126,10 +117,7 @@ public class DemoDataInitializer implements ApplicationRunner {
                         "Customer Support, CRM, Communication, Troubleshooting",
                         "Entry Level",
                         280000,
-<<<<<<< HEAD
-=======
                         "NGN",
->>>>>>> a270d61 (Update API and documentation)
                         false,
                         "Shift based",
                         "8 Aba Road, Port Harcourt",
@@ -154,10 +142,7 @@ public class DemoDataInitializer implements ApplicationRunner {
             String requiredSkills,
             String experienceLevel,
             double salary,
-<<<<<<< HEAD
-=======
             String currency,
->>>>>>> a270d61 (Update API and documentation)
             Boolean requiresInternet,
             String workHours,
             String officeAddress,
@@ -175,10 +160,7 @@ public class DemoDataInitializer implements ApplicationRunner {
         job.setRequiredSkills(requiredSkills);
         job.setExperienceLevel(experienceLevel);
         job.setSalary(salary);
-<<<<<<< HEAD
-=======
         job.setCurrency(currency);
->>>>>>> a270d61 (Update API and documentation)
         job.setRequiresInternet(requiresInternet);
         job.setWorkHours(workHours);
         job.setOfficeAddress(officeAddress);
